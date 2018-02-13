@@ -21,10 +21,8 @@
       		<input type="text" name="password">
       		
       		<c:if test = "${'fail'== param.result }">
-								<p class="form-error">
-				로그인이 실패하였습니다. 다시 로그인 해주세요.
-			</p>
-						</c:if>
+				<p class="form-error"> 로그인이 실패하였습니다. 다시 로그인 해주세요.</p>
+		   </c:if>
       		
       		<input type="submit" value="로그인">
 		</form>

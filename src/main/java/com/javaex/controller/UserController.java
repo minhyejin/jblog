@@ -34,7 +34,7 @@ public class UserController {
 				return "/main/index";
 		}else {
 						
-			return "redirect:/user/loginform?result=fail";
+			return "redirect:/user/loginForm?result=fail";
 		}
 	}
 	
