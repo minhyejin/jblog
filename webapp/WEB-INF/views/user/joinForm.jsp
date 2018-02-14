@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <title>JBlog</title>
 <link rel="stylesheet" href="/jblog/assets/css/jblog.css">
 </head>
@@ -41,18 +42,17 @@
 </body>
 
 <script type="text/javascript">
-
-${"#btn-checkid"}.on("click", function(){
+	$("#btn-checkid").on("click",function(){
 	
-	var id = ${"#id"}.val();
-	var userVo = {
-			id :id	}	
+	var id = $("[name=id]").val();
+
+		 
 	$.ajax({
 		
 		url : "${pageContext.request.contextPath }/user/api/idcheck",		
 		type : "get",
-		contentType : "application/json",
-		data : JSON.stringify(userVo),
+		//contentType : "application/json",
+		data : {id : id},
 		
 		//받을 때 데이터 타입
 		dataType : "json",
