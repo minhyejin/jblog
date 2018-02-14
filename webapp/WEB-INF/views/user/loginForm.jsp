@@ -18,10 +18,10 @@
       		<input type="text" name="id">
       		
       		<label>패스워드</label> 
-      		<input type="text" name="password">
+      		<input type="password" name="password">
       		
       		<c:if test = "${'fail'== param.result }">
-				<p class="form-error"> 로그인이 실패하였습니다. 다시 로그인 해주세요.</p>
+				<p class="form-error"> 로그인이 실패하였습니다. 확인 후 다시 로그인 해주세요.</p>
 		   </c:if>
       		
       		<input type="submit" value="로그인">

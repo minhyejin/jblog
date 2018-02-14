@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div class="center-content">
-		
 		 <!-- /header -->
 		 <c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		

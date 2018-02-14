@@ -29,6 +29,7 @@ public class UserController {
 						HttpSession session) {
 	
 		UserVo authUser = userService.login(id, password);
+		System.out.println(authUser);
 		if(authUser != null) {
 			session.setAttribute("authUser", authUser);
 				return "/main/index";

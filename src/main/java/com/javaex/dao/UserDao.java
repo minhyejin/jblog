@@ -19,7 +19,9 @@ public class UserDao {
 		map.put("password", password);
 		return sqlsession.selectOne("user.selectuser",map);
 	}
-	public void insert(UserVo userVo) {
-		 sqlsession.insert("user.insert", userVo);
+	public int insert(UserVo userVo) {
+		System.out.println(userVo.getUserNo()); //비어있을꺼야
+		 sqlsession.insert("user.insert", userVo); //인서트 order="before" 타입이기 때문에 userNo 셀렉해서 vo 에 세팅됨
+		 return userVo.getUserNo(); //번호를 채운상태
 	}
 }
