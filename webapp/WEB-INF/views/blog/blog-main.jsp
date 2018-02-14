@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	
+	<div id="container">
 		<!-- /블로그 해더 -->
 		
 		 <c:import url="/WEB-INF/views/include/blogheader.jsp"></c:import>

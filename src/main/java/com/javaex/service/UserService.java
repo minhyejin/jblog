@@ -18,6 +18,7 @@ public class UserService {
 	private BlogDao blogDao;
 	@Autowired
 	private CategoryDao categoryDao;
+	
 	public UserVo login(String id, String password) {
 		
 		return userDao.getUser(id, password);
@@ -34,5 +35,15 @@ public class UserService {
 		blogDao.insert(new BlogVo(insertUserNo,"기본 블로그명","기본 로고"));
 		categoryDao.createcate(userVo.getUserNo());
 }
+	public boolean selectId(String id) {
+		boolean result;
+		UserVo userVo = userDao.selectId(id);
+		if(userVo!=null) {
+			result = false;
+		}else {
+			result = true;
+		}
+		return result;
+	}
 
 }

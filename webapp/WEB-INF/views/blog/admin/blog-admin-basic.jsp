@@ -23,7 +23,7 @@
 					<li><a href="">글작성</a></li>
 				</ul>
 				
-				<form action="" method="post">
+				<form action="" method="get">
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>

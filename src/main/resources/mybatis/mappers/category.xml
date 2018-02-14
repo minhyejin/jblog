@@ -4,10 +4,11 @@
 <mapper namespace="category">
 	
 		
-		<insert id = "insertcate" parameterType = "com.javaex.vo.CateVo">
-			insert into category 
-			values (seq_category_cateNo.nextval, #{cateName} , #{description}  , #{userNo} , sysdate  )
-		</insert>
+		<update id = "updatecate" parameterType = "com.javaex.vo.CateVo">
+			update category
+			SET  cateName = #{cateName} , description= #{description}
+			WHERE userNo = #{userNo}
+		</update>
 		
 		<insert id = "createcate" parameterType="int" >
 			insert into category 

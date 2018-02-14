@@ -20,9 +20,9 @@
 			<label class="block-label" for="id">아이디</label>
 			<input type="text" name="id"  value="" />
 			<input id="btn-checkid" type="button" value="id 중복체크">
+			<div id ="checkmessage">
 			<img id="img-checkid" style="display: none;" src="${pageContext.request.contextPath}/assets/images/check.png">
-			<p class="form-error">
-			</p>
+			</div>
 
 			<label class="block-label" for="password">패스워드</label>
 			<input type="password" name="password"  value="" />
@@ -39,4 +39,39 @@
 	</div>
 
 </body>
+
+<script type="text/javascript">
+
+${"#btn-checkid"}.on("click", function(){
+	
+	var id = ${"#id"}.val();
+	var userVo = {
+			id :id	}	
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/user/api/idcheck",		
+		type : "get",
+		contentType : "application/json",
+		data : JSON.stringify(userVo),
+		
+		//받을 때 데이터 타입
+		dataType : "json",
+		success : function(result){
+			console.log(result);
+			if(result==true){
+				$("#checkmessage").text("사용할 수 있는 id 입니다.");
+				
+			}else {
+				$("#checkmessage").text("사용할 수 없는 id 입니다.");
+				
+			}
+			/*성공시 처리해야될 코드 작성*/
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+});
+
+</script>
 </html>

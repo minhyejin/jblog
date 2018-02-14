@@ -5,7 +5,7 @@
 
 		<!-- 블로그 헤더 -->
 		<div id="header">
-			<h1>블로그타이틀 출력해야함</h1>
+			<h1>${blogVo.blogTitle}</h1>
 			<ul>
 			<c:choose>
 			

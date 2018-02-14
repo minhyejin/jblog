@@ -13,4 +13,5 @@ public class CategoryDao {
 	public int createcate(int userNo) {
 		return sqlsession.insert("category.createcate", userNo);
 	}
+	
 }

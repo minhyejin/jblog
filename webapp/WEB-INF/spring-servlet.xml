@@ -31,7 +31,7 @@
 
 	<!-- MappingJacksonHttpMessageConverter | ajax use -->
 	<!-- 사용시 위의 <mvc:annotation-driven/>을 주석처리할 것 -->
-	<!-- <mvc:annotation-driven>
+	 <mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes">
@@ -41,7 +41,7 @@
 				</property>
 			</bean>
 		</mvc:message-converters>
-	</mvc:annotation-driven> -->
+	</mvc:annotation-driven> 
 
 	<!-- multipart resolver | fileUpload use -->
 	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

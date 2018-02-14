@@ -24,4 +24,7 @@ public class UserDao {
 		 sqlsession.insert("user.insert", userVo); //인서트 order="before" 타입이기 때문에 userNo 셀렉해서 vo 에 세팅됨
 		 return userVo.getUserNo(); //번호를 채운상태
 	}
+	public UserVo selectId(String id) {
+		return sqlsession.selectOne("user.selectid",id);
+	}
 }
