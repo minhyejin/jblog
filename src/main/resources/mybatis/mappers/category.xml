@@ -10,9 +10,19 @@
 			WHERE userNo = #{userNo}
 		</update>
 		
-		<insert id = "createcate" parameterType="int" >
+		<insert id = "createcate" parameterType ="map">
 			insert into category 
-			values (seq_category_cateNo.nextval, 'cateName' , 'description'  , #{userNo} , sysdate  )
+			values (seq_category_cateNo.nextval, #{userNo} , #{defaultCategory} ,  #{defaultDesc}  , sysdate  )
 		</insert>
+		<select id ="selectCategoryListByUserNo" parameterType ="int">
+		<![CDATA[
+			SELECT	cateNo
+				 , userNo
+				 , cateName
+				 , description
+			FROM category
+			WHERE userNo = #{userNo}
+		]]>
+	</select>
 		
 </mapper>

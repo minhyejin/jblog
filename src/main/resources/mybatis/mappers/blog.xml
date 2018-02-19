@@ -14,7 +14,7 @@
 			insert into blog
 			values (#{userNo}, #{blogTitle}, #{logoFile})
 		</insert>
-		<update id = "update"  parameterType= "com.javaex.vo.BlogVo">
+		<update id = "update"  parameterType = "com.javaex.vo.BlogVo">
 		<![CDATA[
 		update blog
 		SET  blogTitle = #{blogTitle} , logoFile = #{logoFile}

@@ -23,15 +23,15 @@
 					<li><a href="">글작성</a></li>
 				</ul>
 				
-				<form action="" method="get">
+				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/modify" method="post" enctype = "multipart/form-data">
 	 		      	<table class="admin-config">
 			      		<tr>
-			      			<td class="t">블로그 제목</td>
-			      			<td><input type="text" size="40" name="title"></td>
+			      			<td class="t">블로그제목</td>
+			      			<td><input type="text" size="40" name="title" value="${blogVo.blogTitle }"></td>
 			      		</tr>
 			      		<tr>
 			      			<td class="t">로고이미지</td>
-			      			<td><img src="/jblog/assets/images/spring-logo.jpg"></td>      			
+			      			<td><img src="${pageContext.request.contextPath}/${url}${blogVo.logoFile }"></td>      			
 			      		</tr>      		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>
@@ -42,16 +42,13 @@
 			      			<td class="s"><input type="submit" value="기본설정 변경"></td>      			
 			      		</tr>           		
 			      	</table>
+			      	<input type="hidden" name="userNo" value="${blogVo.userNo }" /> 
 				</form>
 			</div>
 		</div>
 		
 		<!-- 푸터 -->
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2018
-			</p>
-		</div>
+		 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- 푸터 -->
 	
 	</div>

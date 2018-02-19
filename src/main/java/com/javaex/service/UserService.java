@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javaex.dao.BlogDao;
-import com.javaex.dao.CategoryDao;
+
 import com.javaex.dao.UserDao;
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.UserVo;
@@ -17,7 +17,7 @@ public class UserService {
 	@Autowired
 	private BlogDao blogDao;
 	@Autowired
-	private CategoryDao categoryDao;
+	private CategoryService cateService;
 	
 	public UserVo login(String id, String password) {
 		
@@ -33,7 +33,7 @@ public class UserService {
 	public void insert(UserVo userVo) {
 		int insertUserNo = userDao.insert(userVo);
 		blogDao.insert(new BlogVo(insertUserNo,"기본 블로그명","기본 로고"));
-		categoryDao.createcate(userVo.getUserNo());
+		cateService.createCate(userVo);
 }
 	public boolean selectId(String id) {
 		boolean result;

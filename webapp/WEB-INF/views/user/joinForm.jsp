@@ -45,33 +45,40 @@
 	$("#btn-checkid").on("click",function(){
 	
 	var id = $("[name=id]").val();
-
-		 
-	$.ajax({
-		
-		url : "${pageContext.request.contextPath }/user/api/idcheck",		
-		type : "get",
-		//contentType : "application/json",
-		data : {id : id},
-		
-		//받을 때 데이터 타입
-		dataType : "json",
-		success : function(result){
-			console.log(result);
-			if(result==true){
-				$("#checkmessage").text("사용할 수 있는 id 입니다.");
+	console.log(id);
+	
+	var userVo = {
+			id : id
+	}
+	
+		$.ajax({
+			url : "${pageContext.request.contextPath }/user/api/idcheck",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(userVo),
+			dataType : "json",
+			success : function(result){
+				console.log(result);
 				
-			}else {
-				$("#checkmessage").text("사용할 수 없는 id 입니다.");
+				if(result==true){
+					$("#checkmessage").text("사용할 수 있는 id 입니다.");
+					
+				}else {
+					$("#checkmessage").text("사용할 수 없는 id 입니다.");
+					
+				}
 				
-			}
-			/*성공시 처리해야될 코드 작성*/
-		},
-		error : function(XHR, status, error) {
+			},
+			error : function(XHR, status, error) {
 			console.error(status + " : " + error);
-		}
-	});
+			}
+			});
+	
 });
 
-</script>
+
+
+	
+	
+</script> 
 </html>

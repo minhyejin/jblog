@@ -15,7 +15,7 @@ public class ApiUserController {
 	@Autowired
 	private UserService userService;
 	@ResponseBody
-	@RequestMapping(value ="/user/api/idcheck",method = RequestMethod.GET)
+	@RequestMapping(value ="/user/api/idcheck",method = RequestMethod.POST)
 	public boolean idcheck(@RequestBody UserVo userVo) {
 		System.out.println(userVo);
 		return userService.selectId(userVo.getId());

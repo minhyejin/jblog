@@ -15,7 +15,7 @@
 		com.javaex.controller 패키지 밑에 있는 클래스 중에
 		@Controller를 달고 있는 클래스의 객체를 생성 하겠다. (new 하겠다)
 	 -->
-	<context:component-scan base-package="com.javaex.controller"/>
+	<context:component-scan base-package="com.javaex.controller,com.javaex.api.controller"/>
 	
 	<!-- default view resolver -->
 	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,7 +27,7 @@
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler/>
-	<mvc:annotation-driven/> 
+<!-- 	<mvc:annotation-driven/>  -->
 
 	<!-- MappingJacksonHttpMessageConverter | ajax use -->
 	<!-- 사용시 위의 <mvc:annotation-driven/>을 주석처리할 것 -->
@@ -44,13 +44,13 @@
 	</mvc:annotation-driven> 
 
 	<!-- multipart resolver | fileUpload use -->
-	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="52428800"/> 
 		<property name="maxInMemorySize" value="52428800"/>
 		<property name="defaultEncoding" value="utf-8"/>
-	</bean> -->
+	</bean>
 	
 	<!-- multipart connect | fileUpload use(location) -->
-	<!-- <mvc:resources mapping="/upload/**" location="file:D:/javaStudy/upload/"/> -->
+	 <mvc:resources mapping="/upload/**" location="file:c:/javaStudy/upload/"/> 
 	<!-- upload로 오면 location 위치를 찾아라 -->
 </beans>

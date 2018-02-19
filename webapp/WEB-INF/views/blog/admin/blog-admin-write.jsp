@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/jblog/assets/css/jblog.css">
 </head>
 <body>
-
+<div id="container">
 	 <c:import url="/WEB-INF/views/include/blogheader.jsp"></c:import>
 
 		
@@ -47,11 +47,7 @@
 		</div>
 		
 		<!-- 푸터 -->
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2018
-			</p>
-		</div>
+	 <c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- 푸터 -->
 		
 	</div>

@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,9 @@ public class BlogDao {
 	}
 	public BlogVo selectblog(String id) {
 		return sqlsession.selectOne("blog.selectblog", id);
+	}
+	public void modify(BlogVo blogVo) {
+		
+		 sqlsession.update("blog.update",blogVo);
 	}
 }
