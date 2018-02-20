@@ -22,14 +22,7 @@
 			WHERE userNo = #{userNo}
 		]]>
 		</select>
-	<!-- 	<insert id = "insertcate" parameterType ="com.javaex.vo.CateVo" >
-			<selectKey keyProperty="cateNo" resultType="int" order="BEFORE">	
-				select seq_category_no.nextval from dual
-			</selectKey>
-			insert into category 
-			values ( #{cateNo} , #{userNo} , #{defaultCategory} ,  #{defaultDesc}  , sysdate  )
-		</insert>
-		 -->
+	
 		<delete id = "deletecate" parameterType ="int">
 			delete from category
 			where cateNo = #{cateNo}
