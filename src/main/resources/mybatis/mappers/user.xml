@@ -12,7 +12,7 @@
 	</select>
 	<insert id = "insert"  parameterType= "com.javaex.vo.UserVo">
 		<selectKey keyProperty="userNo" resultType="int" order="BEFORE">	
-			select seq_users_userNo.nextval 
+			select seq_users_no.nextval 
 			from dual
 		</selectKey>
 		

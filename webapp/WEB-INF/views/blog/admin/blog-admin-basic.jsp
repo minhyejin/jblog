@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>JBlog</title>
 <link rel="stylesheet" href="/jblog/assets/css/jblog.css">
 </head>
@@ -18,9 +19,9 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li class="selected"><a href="">기본설정</a></li>
-					<li><a href="">카테고리</a></li>
-					<li><a href="">글작성</a></li>
+					<li class="selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/modify">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/cate">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/write">글작성</a></li>
 				</ul>
 				
 				<form action="${pageContext.request.contextPath}/${authUser.id}/admin/modify" method="post" enctype = "multipart/form-data">
@@ -31,7 +32,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td class="t">로고이미지</td>
-			      			<td><img src="${pageContext.request.contextPath}/${url}${blogVo.logoFile }"></td>      			
+			      			<td><img src="${pageContext.request.contextPath}/${url}${blogVo.logoFile}"></td>      			
 			      		</tr>      		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>

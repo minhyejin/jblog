@@ -1,12 +1,13 @@
 package com.javaex.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import com.javaex.service.CategoryService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class CategoryController {
-	@Autowired
-	private CategoryService cateService;
+public class CategoryController {	
+
+	@RequestMapping("/{id}/admin/cate")
+	public String cateForm() {
+		return "/blog/admin/blog-admin-cate";
+	}
+	
 }

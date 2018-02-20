@@ -6,10 +6,13 @@
 	<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
 	<typeAlias alias="BlogVo" type="com.javaex.vo.BlogVo" />
 	<typeAlias alias="CateVo" type="com.javaex.vo.CateVo" />
+	<typeAlias alias="postVo" type="com.javaex.vo.postVo" />
+	
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/blog.xml" />
 		<mapper resource="mybatis/mappers/category.xml" />
+		<mapper resource="mybatis/mappers/post.xml" />
 	</mappers>
 </configuration>

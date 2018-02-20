@@ -10,19 +10,41 @@
 			WHERE userNo = #{userNo}
 		</update>
 		
-		<insert id = "createcate" parameterType ="map">
+		 <insert id = "createcate" parameterType ="map">
 			insert into category 
-			values (seq_category_cateNo.nextval, #{userNo} , #{defaultCategory} ,  #{defaultDesc}  , sysdate  )
-		</insert>
-		<select id ="selectCategoryListByUserNo" parameterType ="int">
+			values (seq_category_no.nextval, #{userNo} , #{defaultCategory} ,  #{defaultDesc}  , sysdate  )
+		</insert> 
+		<select id ="selectCategoryListByUserNo" parameterType ="int" resultType ="CateVo" >
 		<![CDATA[
-			SELECT	cateNo
-				 , userNo
-				 , cateName
-				 , description
+			SELECT	cateNo , userNo
+				 , cateName , description
 			FROM category
 			WHERE userNo = #{userNo}
 		]]>
-	</select>
+		</select>
+	<!-- 	<insert id = "insertcate" parameterType ="com.javaex.vo.CateVo" >
+			<selectKey keyProperty="cateNo" resultType="int" order="BEFORE">	
+				select seq_category_no.nextval from dual
+			</selectKey>
+			insert into category 
+			values ( #{cateNo} , #{userNo} , #{defaultCategory} ,  #{defaultDesc}  , sysdate  )
+		</insert>
+		 -->
+		<delete id = "deletecate" parameterType ="int">
+			delete from category
+			where cateNo = #{cateNo}
+		</delete>
+		
+		<insert id="insertCategoryByCategoryVo" parameterType ="CateVo">
+		<selectKey keyProperty="cateNo" resultType="int" order="BEFORE">	
+			select seq_category_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			INSERT INTO category
+			VALUES (#{cateNo}, #{userNo}, #{cateName}, #{description}, SYSDATE)
+		
+		]]>
+		
+	</insert>
 		
 </mapper>

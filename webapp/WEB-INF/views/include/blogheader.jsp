@@ -5,8 +5,15 @@
 
 		<!-- 블로그 헤더 -->
 		<div id="header">
-			<h1>${blogVo.blogTitle}</h1>
-			<ul>
+		<c:choose>
+			<c:when test="${blogVo == null }">
+				<h1>     </h1>
+			</c:when>
+			<c:otherwise>		
+				<h1>${blogVo.blogTitle }</h1>
+			</c:otherwise>
+		</c:choose>
+			
 			<c:choose>
 			
 				<c:when test = "${authUser == null }">
@@ -18,5 +25,5 @@
 				<li><a href="${pageContext.request.contextPath }/${authUser.id}/admin/basic">내블로그 관리</a></li>
 				</c:otherwise>
 			</c:choose>
-			</ul>
-		</div>
+			</div>
+	

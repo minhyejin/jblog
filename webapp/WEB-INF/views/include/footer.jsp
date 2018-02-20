@@ -3,6 +3,6 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="footer">
 			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2018
+				<strong>민혜진 Spring </strong> is powered by JBlog (c)2018
 			</p>
 		</div>
