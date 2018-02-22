@@ -22,4 +22,8 @@ public class PostDao {
 		System.out.println(postMap);
 		return sqlsession.selectList("post.selectpostListBycateNo",postMap); 
 	}
+	public int selectcount(int cateNo) {
+		return sqlsession.selectOne("post.selectCountPost",cateNo);
+	}
+	
 }

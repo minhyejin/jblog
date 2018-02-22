@@ -10,7 +10,7 @@
 				<h1>     </h1>
 			</c:when>
 			<c:otherwise>		
-				<h1>${blogVo.blogTitle }</h1>
+				<h1><a href = "${pageContext.request.contextPath }/${authUser.id}">${blogVo.blogTitle }</a></h1>
 			</c:otherwise>
 		</c:choose>
 			

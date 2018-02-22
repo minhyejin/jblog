@@ -16,11 +16,14 @@
 		</insert> 
 		<select id ="selectCategoryListByUserNo" parameterType ="int" resultType ="CateVo" >
 		<![CDATA[
-			SELECT	cateNo , userNo
-				 , cateName , description
-			FROM category
-			WHERE userNo = #{userNo}
-			order by cateNo desc
+			select C.cateNo, userNo, cateName, description, regDate, NVL(pcount,0) postCount
+			from category C, 
+			    (select cateNo,count(*) pcount
+			    from post
+			    group by cateNo) PCOUNT
+			WHERE C.cateNo = PCOUNT.cateNo (+)
+			AND userNo =#{userNo}
+			ORDER BY cateNo DESC
 		]]>
 		</select>
 	

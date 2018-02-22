@@ -23,5 +23,13 @@
 		]]>
 		</select>
 		
+		<select id = "selectCountPost" parameterType = "int" resultType="int">
+		<![CDATA[
+			select count(*)
+			from post
+			WHERE cateNo = #{cateNo}
+		]]>
+		</select>
+		
 		
 </mapper>

@@ -26,9 +26,9 @@ public class PostService {
 			postMap.put("userNo", userNo);
 			postMap.put("cateNo", cateNo);	
  		
-		return postDao.selectPostByCateNo(postMap);
-			
-		
-		
+		return postDao.selectPostByCateNo(postMap);	
+	}
+	public int selectcount(int cateNo) {
+		return postDao.selectcount(cateNo);
 	}
 }

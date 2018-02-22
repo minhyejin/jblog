@@ -33,7 +33,7 @@ public class BlogController {
 	private CategoryService cateService;
 	@Autowired
 	private PostService postService;
-
+	
 	
 	
 	@RequestMapping(value ="/{id}/admin/basic", method = RequestMethod.GET)
@@ -67,7 +67,6 @@ public class BlogController {
 		model.addAttribute("cateList", cateList);
 		List<postVo> postList = postService.getpostList(userNo, cateNo);
 		model.addAttribute("postList",postList);
-		System.out.println(postList.toString());
 		
 		return "/blog/blog-main";
 	}
@@ -93,7 +92,8 @@ public class BlogController {
 	@RequestMapping("/{id}/admin/write")
 	public String writeForm(@PathVariable("id") String id, Model model, HttpSession session) {
 		System.out.println("write 진입");
-		
+		BlogVo blogVo = blogService.select(id);
+		model.addAttribute("blogVo", blogVo);
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 		int userNo = userVo.getUserNo();
 		System.out.println(userNo);

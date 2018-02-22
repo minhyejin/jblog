@@ -18,7 +18,7 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/modify">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
 					<li class="selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/cate">카테고리</a></li>
 					<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/write">글작성</a></li>
 				</ul>
@@ -28,7 +28,7 @@
 					<tr id = "cate-area-after">
 						<td>카테고리 번호</td>
 						<td>카테고리 이름</td>
-						<td>사용자 번호</td>
+						<td>포스트 수</td>
 						<td>내용</td>
 						<td >삭제</td>
 					</tr>					  

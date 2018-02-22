@@ -6,8 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>JBlog</title>
+<%-- <link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/jblog.css">
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"></script> --%>
 </head>
 <body>
 
@@ -29,23 +31,16 @@
 							<h4>${postList[0].postTitle}</h4>
 							<p>
 								${postList[0].postContent}
-							<p>
-							<h3> ${postList[0].regDate }</h3>
-						</c:if>	
+							</p>
+							
+						</c:if>		
 						
-						<c:if test="${param.postNo != null}">
-							<c:forEach items="${postList }" var = "postvo">
-								<c:if test="${param.postNo == postvo.postNo}">
-									<h4>${postvo.postTitle }</h4>
-									<p>
-										${postvo.postContent }
-									<p>
-									<h3>${postvo.regDate }</h3>
-								</c:if>	
+						<ul class="blog-list">
+						<c:forEach items="${postList }" var = "postvo">	
+						<li><a href="">${postvo.postTitle }</a> <span>${postvo.regDate }</span>	</li>		
 							</c:forEach>
+						</ul>
 
-						</c:if>	
-						
 					</div>
 			</div>
 		</div>
@@ -61,7 +56,7 @@
 			<ul>
 			
 				<c:forEach items="${cateList }" var = "cateVo">
-				<li><a href="">${cateVo.cateName }</a></li>
+				<li><a href=" ">${cateVo.cateName }</a></li>
 				</c:forEach>
 			</ul>
 		</div>
