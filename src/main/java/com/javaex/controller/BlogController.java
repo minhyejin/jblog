@@ -15,9 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.BlogService;
 import com.javaex.service.CategoryService;
+import com.javaex.service.PostService;
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.CateVo;
 import com.javaex.vo.UserVo;
+import com.javaex.vo.postVo;
 
 
 
@@ -29,6 +31,9 @@ public class BlogController {
 	private BlogService blogService;
 	@Autowired
 	private CategoryService cateService;
+	@Autowired
+	private PostService postService;
+
 	
 	
 	@RequestMapping(value ="/{id}/admin/basic", method = RequestMethod.GET)
@@ -48,11 +53,21 @@ public class BlogController {
 	  
 	}
 	@RequestMapping(value ="/{id}", method = RequestMethod.GET)
-	public String mainPage(@PathVariable("id") String id, Model model) {
+	public String mainPage(@PathVariable("id") String id, Model model,
+							HttpSession session,
+							@RequestParam(value = "cateNo", required = false, defaultValue = "0") int cateNo,
+							@RequestParam(value = "postNo" , required = false, defaultValue = "0") int postNo) {
 		BlogVo blogVo= blogService.select(id);
 		model.addAttribute("blogVo",blogVo);
 		String url = "upload/";
 		model.addAttribute("url", url);
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		int userNo = userVo.getUserNo();
+		List<CateVo> cateList = cateService.getCateList(userNo);
+		model.addAttribute("cateList", cateList);
+		List<postVo> postList = postService.getpostList(userNo, cateNo);
+		model.addAttribute("postList",postList);
+		System.out.println(postList.toString());
 		
 		return "/blog/blog-main";
 	}
@@ -76,7 +91,7 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/{id}/admin/write")
-	public String writeFrom(@PathVariable("id") String id, Model model, HttpSession session) {
+	public String writeForm(@PathVariable("id") String id, Model model, HttpSession session) {
 		System.out.println("write 진입");
 		
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
@@ -88,6 +103,25 @@ public class BlogController {
 		
 		return "/blog/admin/blog-admin-write";
 	}
+	@RequestMapping("/{id}/admin/writepost")
+	public String write(@PathVariable("id") String id
+						, HttpSession session
+						, postVo postvo){
+			System.out.println("writepost 진입");
+			System.out.println(postvo);
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		if(authUser.getId().equals(id)) {
+			postvo.setPostContent(postvo.getPostContent());
+			postService.writepost(postvo);
+			
+			return "redirect:/{id}/admin/write";
+		}else {
+			return "redirect:/{id}";
+		}
+		
+	}
+	
+	
 	
 	
 	

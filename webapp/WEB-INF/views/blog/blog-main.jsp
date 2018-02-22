@@ -19,18 +19,34 @@
 		<div id="wrapper">
 			<div id="content">
 				<div class="blog-content">
-					<h4>제목없음</h4>
-					<p>
-						내용없음
-					<p>
-				</div>
-				<ul class="blog-list">
-					<li><a href="">Spring Camp 2016 참여기</a> <span>2015/05/02</span>	</li>
-					<li><a href="">Spring Boot 사용법 정리</a> <span>2015/05/02</span>	</li>
-					<li><a href="">Spring Security 설정법</a> <span>2015/05/02</span>	</li>
-					<li><a href="">JPA + Hinernate</a> <span>2015/05/02</span>	</li>
-					<li><a href="">AOP 활용하기 - DAO 실행시간 측정하기</a> <span>2015/05/02</span>	</li>
-				</ul>
+					
+						<c:if test="${(postList[0] == null)}">
+							<h4>등록된 글이 없습니다.</h4>
+						</c:if>	
+					
+						<c:if test="${(postList[0] != null)
+						&& (param.postNo == null)}">
+							<h4>${postList[0].postTitle}</h4>
+							<p>
+								${postList[0].postContent}
+							<p>
+							<h3> ${postList[0].regDate }</h3>
+						</c:if>	
+						
+						<c:if test="${param.postNo != null}">
+							<c:forEach items="${postList }" var = "postvo">
+								<c:if test="${param.postNo == postvo.postNo}">
+									<h4>${postvo.postTitle }</h4>
+									<p>
+										${postvo.postContent }
+									<p>
+									<h3>${postvo.regDate }</h3>
+								</c:if>	
+							</c:forEach>
+
+						</c:if>	
+						
+					</div>
 			</div>
 		</div>
 
@@ -43,6 +59,7 @@
 		<div id="navigation">
 			<h2>카테고리</h2>
 			<ul>
+			
 				<c:forEach items="${cateList }" var = "cateVo">
 				<li><a href="">${cateVo.cateName }</a></li>
 				</c:forEach>

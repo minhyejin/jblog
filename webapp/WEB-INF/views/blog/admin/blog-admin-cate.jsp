@@ -30,7 +30,7 @@
 						<td>카테고리 이름</td>
 						<td>사용자 번호</td>
 						<td>내용</td>
-						<td ><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
+						<td >삭제</td>
 					</tr>					  
 				</table>
       	

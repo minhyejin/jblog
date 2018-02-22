@@ -2,13 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post">
 	
-		<insert id="insertPost"  parameterType = "map">
-		
+		<insert id="insertPost" parameterType = "com.javaex.vo.postVo">
 		<![CDATA[
-			INSERT INTO post VALUES(seq_post_no.nextval , #{cateNo}, #{postTitle}, #{postContent}, SYSDATE)
+			INSERT INTO post 
+			VALUES(seq_post_no.nextval , #{cateNo}, #{postTitle}, #{postContent}, SYSDATE)
 		]]>
-		
 		</insert>
-
-
+		<select id ="selectpostListBycateNo" parameterType ="map" resultType ="postvo" >
+		<![CDATA[
+			SELECT p.postNo, p.cateNo, p.postTitle, p.postContent, TO_CHAR(P.regDate,'YYYY/MM/DD') regDate, c.userNo
+			FROM post p, category c
+			WHERE p.cateNo = c.cateNo
+			AND c.userNo = #{userNo} 
+		]]>
+		<if test="cateNo!=0">
+			AND c.cateNo = #{cateNo} 
+		</if>	
+		<![CDATA[	
+			ORDER BY postNo DESC
+		]]>
+		</select>
+		
+		
 </mapper>

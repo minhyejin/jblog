@@ -1,25 +1,34 @@
 package com.javaex.service;
 
+
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.PostDao;
+import com.javaex.vo.postVo;
 
 @Service
 public class PostService {
 	@Autowired
 	private PostDao postDao;
 	
-	public void writepost(String postTitle, String postContent, int catepostno) {
+	public int writepost(postVo postvo) {
+		 return postDao.insertpost(postvo);
+	}
+	
+	public List<postVo> getpostList(int userNo,int cateNo) {
 		Map<String, Object> postMap = new HashMap<>();
-		postMap.put("postTitle", postTitle);
-		postMap.put("postContent", postContent);
-		postMap.put("cateNo", catepostno);
+			postMap.put("userNo", userNo);
+			postMap.put("cateNo", cateNo);	
+ 		
+		return postDao.selectPostByCateNo(postMap);
+			
 		
-		int result = postDao.insertpost(postMap);
-		System.out.println(result);
+		
 	}
 }

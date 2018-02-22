@@ -69,5 +69,4 @@ public class BlogService {
 				return blogVo;
 				
 	}
-	
 }
