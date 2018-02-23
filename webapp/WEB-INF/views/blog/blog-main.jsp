@@ -26,19 +26,36 @@
 							<h4>등록된 글이 없습니다.</h4>
 						</c:if>	
 					
-						<c:if test="${(postList[0] != null)
-						&& (param.postNo == null)}">
-							<h4>${postList[0].postTitle}</h4>
-							<p>
-								${postList[0].postContent}
-							</p>
+						<c:if test="${(postList[0] != null)}">
 							
+								<c:choose >
+									<c:when test="${param.selectPost==null }">
+										<h4>${postList[0].postTitle}</h4>
+										<p>
+											${postList[0].postContent}
+										</p>
+									</c:when>
+									<c:otherwise>
+										<c:forEach items="${postList}" var="p" varStatus="s" >
+											<c:if test="${postList[s.index].postNo==param.selectPost}">
+												<h4>${p.postTitle}</h4>
+												<p>
+													${p.postContent}
+												</p>
+											</c:if>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+								
+								
+								
+								
 						</c:if>		
 						
 						<ul class="blog-list">
 						<c:forEach items="${postList }" var = "postvo">	
-						<li><a href="">${postvo.postTitle }</a> <span>${postvo.regDate }</span>	</li>		
-							</c:forEach>
+						<li><a href="${pageContext.request.contextPath }/${authUser.id}?cateNo=${postvo.cateNo}&selectPost=${postvo.postNo}">${postvo.postTitle }</a><span>${postvo.regDate }</span></li>		
+						</c:forEach>
 						</ul>
 
 					</div>
@@ -54,9 +71,9 @@
 		<div id="navigation">
 			<h2>카테고리</h2>
 			<ul>
-			
+				<li><a href="${pageContext.request.contextPath}/${id}/">전체</a></li>
 				<c:forEach items="${cateList }" var = "cateVo">
-				<li><a href=" ">${cateVo.cateName }</a></li>
+				<li><a href="${pageContext.request.contextPath}/${id}/?cateNo=${cateVo.cateNo}">${cateVo.cateName }</a></li>
 				</c:forEach>
 			</ul>
 		</div>

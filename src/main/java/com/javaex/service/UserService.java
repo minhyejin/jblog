@@ -32,7 +32,13 @@ public class UserService {
 	@Transactional
 	public void insert(UserVo userVo) {
 		int insertUserNo = userDao.insert(userVo);
-		blogDao.insert(new BlogVo(insertUserNo,"기본 블로그명","기본 로고"));
+		String defaultimage = "spring-logo.jpg";
+		BlogVo blogVo = new BlogVo();
+		blogVo.setUserNo(insertUserNo);
+		blogVo.setBlogTitle(userVo.getUserName()+"님의 블로그");
+		blogVo.setLogoFile(defaultimage);
+		
+		blogDao.insert(blogVo);
 		cateService.createCate(userVo);
 }
 	public boolean selectId(String id) {

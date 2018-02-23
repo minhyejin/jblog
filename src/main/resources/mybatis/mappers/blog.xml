@@ -3,12 +3,12 @@
 
 <mapper namespace="blog">
 	
-		<select id = "selectblog" resultType = "com.javaex.vo.BlogVo" >
+		<select id = "selectblog" parameterType= "String" resultType = "com.javaex.vo.BlogVo" >
 		<![CDATA[
 		  select  b.userNo, b.blogTitle, b.logoFile
 		  from blog b, users u
 		  where u.id = #{id} and u.userNo = b.userNo
-				]]>
+		]]>
 		</select>
 		<insert id = "insertblog" parameterType = "com.javaex.vo.BlogVo">
 			insert into blog
